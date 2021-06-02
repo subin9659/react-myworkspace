@@ -34,6 +34,7 @@ const Todo = () => {
           <Grid item sm={1} md={2} lg={3} />
         </Hidden>
         <Grid item xs={12} sm={10} md={8} lg={6}>
+          inputvalue, t_body, onRemove, onEdit, onSave, onCancel
           <Paper className={classes.paper}>
             <Typography variant="h3">To-Do</Typography>
             <Divider style={{ marginTop: "1rem", marginBottom: "2rem" }} />
