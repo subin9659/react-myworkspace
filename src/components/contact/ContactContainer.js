@@ -11,7 +11,6 @@ const ContactContainer = () => {
   const u_name = useRef();
   const u_num = useRef();
   const u_mail = useRef();
-
   const t_body = useRef();
 
   const add = () => {
@@ -84,20 +83,8 @@ const ContactContainer = () => {
 
   return (
     <>
-      <ContactForm
-        inputName={u_name}
-        inputNum={u_num}
-        inputMail={u_mail}
-        onAdd={add}
-      />
-      <ContactList
-        inputvalue={inputvalue}
-        t_body={t_body}
-        onRemove={remove}
-        onEdit={edit}
-        onSave={save}
-        onCancel={cancel}
-      />
+      <ContactForm />
+      <ContactList />
     </>
   );
 };

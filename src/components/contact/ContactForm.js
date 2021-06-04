@@ -1,21 +1,18 @@
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import TextField from "@material-ui/core/TextField";
-import { memo } from "react";
 
-const ContactForm = ({ inputName, inputNum, inputMail, onAdd }) => {
+const ContactForm = ({ u_name, u_num, u_mail, onAdd }) => {
   return (
     <div>
-      <form className={classes.root} noValidate autoComplete="off">
-        <TextField label="Name" inputRef={inputName} />
-        <TextField label="Number" inputRef={inputNum} />
-        <TextField label="Mail" inputRef={inputMail} />
+      <input type="text" placeholder="name" ref={u_name} />
+      <input type="text" placeholder="num" ref={u_num} />
+      <input type="text" placeholder="mail" ref={u_mail} />
 
-        <ButtonGroup color="primary" aria-label="outlined primary button group">
-          <Button onClick={onAdd}>입력</Button>
-        </ButtonGroup>
-      </form>
+      <ButtonGroup color="primary" aria-label="outlined primary button group">
+        <Button onClick={onAdd}>입력</Button>
+      </ButtonGroup>
     </div>
   );
 };
-export default memo(ContactForm);
+export default ContactForm;
