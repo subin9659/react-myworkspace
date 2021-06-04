@@ -11,6 +11,7 @@ const ContactContainer = () => {
   const u_name = useRef();
   const u_num = useRef();
   const u_mail = useRef();
+
   const t_body = useRef();
 
   const add = () => {
@@ -32,29 +33,6 @@ const ContactContainer = () => {
     setInputvalue(inputvalue.filter((_, idx) => idx !== index));
   };
 
-  const edit = (index) => {
-    setInputvalue(
-      inputvalue.map((value, idx) => {
-        if (idx === index) {
-          value.isEdit = true;
-          //console.log(value);
-        }
-        return value;
-      })
-    );
-  };
-
-  const cancel = (index) => {
-    setInputvalue(
-      inputvalue.map((value, idx) => {
-        if (idx === index) {
-          delete value.isEdit;
-        }
-        return value;
-      })
-    );
-  };
-
   const save = (index) => {
     setInputvalue(
       inputvalue.map((value, idx) => {
@@ -66,9 +44,17 @@ const ContactContainer = () => {
           const tdValue2 = trValue.children[2];
           const tdValue3 = trValue.children[3];
 
+          console.log(tdValue1);
+          console.log(tdValue2);
+          console.log(tdValue3);
+
           const td2Value1 = tdValue1.querySelector("input");
           const td2Value2 = tdValue2.querySelector("input");
           const td2Value3 = tdValue3.querySelector("input");
+
+          console.log(td2Value1);
+          console.log(td2Value2);
+          console.log(td2Value3);
 
           value.name = td2Value1.value;
           value.num = td2Value2.value;
@@ -83,8 +69,13 @@ const ContactContainer = () => {
 
   return (
     <>
-      <ContactForm />
-      <ContactList />
+      <ContactForm u_name={u_name} u_num={u_num} u_mail={u_mail} onAdd={add} />
+      <ContactList
+        inputvalue={inputvalue}
+        t_body={t_body}
+        onRemove={remove}
+        onSave={save}
+      />
     </>
   );
 };

@@ -38,7 +38,6 @@ const Contact = () => {
 
   return (
     <>
-      <ContactContainer />
       <table>
         <thead>
           <tr>
@@ -51,6 +50,7 @@ const Contact = () => {
         </thead>
         <tbody></tbody>
       </table>
+      <ContactContainer />
     </>
   );
 };

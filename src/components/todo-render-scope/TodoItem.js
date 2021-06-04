@@ -19,7 +19,9 @@ const TodoItem = ({ index, todo, onRemove, onSave }) => {
       >
         <Check />
       </ListItemIcon>
+
       {!isEdit && <ListItemText>{todo.memo}</ListItemText>}
+
       {!isEdit && (
         <Button
           onClick={() => {
@@ -38,6 +40,7 @@ const TodoItem = ({ index, todo, onRemove, onSave }) => {
           ></TextField>
         </ListItemText>
       )}
+
       {isEdit && (
         <Button
           onClick={() => {
@@ -48,6 +51,7 @@ const TodoItem = ({ index, todo, onRemove, onSave }) => {
           save
         </Button>
       )}
+
       {isEdit && (
         <Button
           onClick={() => {
