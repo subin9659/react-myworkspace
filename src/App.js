@@ -46,7 +46,10 @@ const store = createStore(rootReducer);
 // 라우터에 로딩되는 컴포넌트는 컨테이너 컴포넌트
 const Todo = lazy(() => import("./components/todo-redux/Todo"));
 const TodoDetail = lazy(() => import("./components/todo-redux/TodoDetail"));
-const Contact = lazy(() => import("./components/contact/Contact"));
+const Contact = lazy(() => import("./components/contact-redux/Contact"));
+const ContactDetail = lazy(() =>
+  import("./components/contact-redux/ContactDetail")
+);
 
 const drawerWidth = "240px";
 
@@ -200,6 +203,7 @@ function App() {
                   {/* :매개변수명 -> 컴포넌트에서 변수처럼 받을 수 있음 */}
                   <Route path="/todo/:id" component={TodoDetail}></Route>
                   <Route path="/contacts" component={Contact}></Route>
+                  <Route path="/contacts/:id" component={ContactDetail}></Route>
                 </Switch>
               </Suspense>
             </main>
