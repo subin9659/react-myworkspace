@@ -11,14 +11,6 @@ const ContactForm = () => {
   const dispatch = useDispatch();
 
   const add = () => {
-    console.log(u_name);
-    console.log(u_num);
-    console.log(u_mail);
-
-    console.log(u_name.value);
-    console.log(u_num.value);
-    console.log(u_mail.value);
-
     const id = new Date().getTime();
     const name = u_name.current.value;
     const num = u_num.current.value;

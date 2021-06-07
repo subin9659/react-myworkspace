@@ -36,10 +36,10 @@ const ContactDetail = () => {
         <Hidden xsDown>
           <Grid item sm={1} md={2} lg={3} />
         </Hidden>
-        <Grid item xs={13} sm={11} md={9} lg={7}>
+        <Grid item xs={12} sm={10} md={8} lg={6}>
           <Paper className={classes.paper}>
             <Typography variant="h3">Contact</Typography>
-            <Divider style={{ marginTop: "2rem", marginBottom: "2rem" }} />
+            <Divider style={{ marginTop: "1rem", marginBottom: "2rem" }} />
             <Box style={{ padding: "1rem" }}>{contact.name}</Box>
             <Box style={{ padding: "1rem" }}>{contact.num}</Box>
             <Box style={{ padding: "1rem" }}>{contact.mail}</Box>
@@ -64,7 +64,7 @@ const ContactDetail = () => {
           </Paper>
         </Grid>
         <Hidden xsDown>
-          <Grid item sm={2} md={3} lg={4} />
+          <Grid item sm={1} md={2} lg={3} />
         </Hidden>
       </Grid>
     </>
