@@ -5,7 +5,7 @@ const contact = (state = initialState, action) => {
     case "ADD_CONTACT_SUCCEEDED":
       return [{ ...action.payload }, ...state];
     case "REMOVE_CONTACT_SUCCEEDED":
-      return state.filter((contact) => contact.id != action.payload);
+      return state.filter((contact) => contact.id !== action.payload);
     case "MODIFY_CONTACT_SUCCEEDED":
       return state.map((contact) =>
         contact.id === action.payload.id ? { ...action.payload } : contact

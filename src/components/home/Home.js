@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
 
-  //화면이 1280px이상이면 그리드 컨테이너 위쪽에 마진을 줌
+  // 화면이 1280px 이상이면 그리드 컨테이너 위쪽에 마진을 줌.
   container: {
     [theme.breakpoints.up("lg")]: {
       marginTop: "80px",
@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = () => {
   const classes = useStyles();
+
   const data = [
     { sido: "seoul", pm10: 20, pm25: 10 },
     { sido: "gyeonggi", pm10: 20, pm25: 10 },
@@ -63,11 +64,12 @@ const Home = () => {
     gwangju: "광주",
     jeju: "제주",
   };
+
   for (let elm of data) {
     elm.sido = sidoKorName[elm.sido];
   }
 
-  //서울 중구의 시간대별 변화
+  // 서울 중구의 시간대별 변화
   const locationCurrentData = [
     { dataTime: "05-27:01", pm10: 46, pm25: 15 },
     { dataTime: "05-27:02", pm10: 46, pm25: 18 },
@@ -84,41 +86,40 @@ const Home = () => {
   ];
 
   return (
-    //Grid 컨테이너 선언
-    //spacing: Grid Item(내부요소) 들의 띄어쓰기
+    // Grid 컨테이너 선언
+    // spacing: Grid Item(내부요소) 들의 띄어쓰기
     <Grid container spacing={3} className={classes.container}>
-      {/* Grid 아이템 선언 lg사이즈 이상일 때 2칸*/}
-      {/* item 공간 합이 12개가 되면 다음행으로 넘어감*/}
+      {/* Grid 아이템 선언 lg사이즈 이상일 때 2칸 */}
+      {/* item 공간 핪이 12개가되면 다음행으로 넘어감 */}
       {/* 1행 */}
       <Hidden mdDown>
-        <Grid item lg={2} />
+        <Grid item lg={1} />
       </Hidden>
-      <Grid item xs={12} sm={7} lg={5}>
+      <Grid item xs={12} sm={7} lg={6}>
         <Paper className={classes.paper} style={{ height: "20vh" }}>
           <BarChartSample data={data} />
         </Paper>
       </Grid>
-      <Grid item xs={12} sm={5} lg={3}>
+      <Grid item xs={12} sm={5} lg={4}>
         <Paper className={classes.paper} style={{ height: "20vh" }}>
           <LineChartSample data={locationCurrentData} />
         </Paper>
       </Grid>
       <Hidden mdDown>
-        <Grid item lg={2} />
+        <Grid item lg={1} />
       </Hidden>
       <Hidden mdDown>
-        <Grid item lg={2} />
+        <Grid item lg={1} />
       </Hidden>
-      <Grid item xs={12} sm={12} lg={8}>
+      <Grid item xs={12} sm={12} lg={10}>
         <Paper className={classes.paper} style={{ height: "40vh" }}>
-          item xs={12} sm={12} lg={8}
+          item xs={12} sm={12} lg={10}
         </Paper>
       </Grid>
       <Hidden mdDown>
-        <Grid item lg={2} />
+        <Grid item lg={1} />
       </Hidden>
     </Grid>
   );
 };
-
 export default Home;

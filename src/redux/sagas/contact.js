@@ -27,7 +27,7 @@ function* fetchContactList(action) {
     const result = yield call(api.fetch);
     console.log(result);
     // 2. 받아온 데이터로 state 변경
-    yield put({ type: "FETCH_TODOLIST_SUCCEEDED", payload: result.data });
+    yield put({ type: "FETCH_CONTACTLIST_SUCCEEDED", payload: result.data });
   } catch (e) {
     alert(e.message);
   }
