@@ -9,8 +9,9 @@ import { green, purple } from "@material-ui/core/colors";
 
 import { ThemeProvider } from "@material-ui/styles";
 
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux"; // saga middleware를 redux store에 적용
 import { Provider } from "react-redux";
+import createSagaMiddleware from "redux-saga"; // saga middleware를 생성하는데 씀
 
 // Core Components
 import AppBar from "@material-ui/core/AppBar";
@@ -38,10 +39,19 @@ import Home from "./components/home/Home";
 
 // ./redux :
 // redux.js , ./redux/index.js
-import rootReducer from "./redux";
+import rootReducer from "./redux/reducers"; //루트 리듀서
+import rootSaga from "./redux/sagas"; //루트 사가
 
+// sagamiddleware생성
+const sagaMiddleware = createSagaMiddleware();
 // rootReduer로 redux store 생성
-const store = createStore(rootReducer);
+// sagaMiddleware 적용
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+
+// 루트 saga로 sagamiddleware 실행
+// saga에서 중간에 캐치할 action들에 대해서 응답대기
+// 반복문이 돌고 있음 -> event-loop
+sagaMiddleware.run(rootSaga);
 
 // 라우터에 로딩되는 컴포넌트는 컨테이너 컴포넌트
 const Todo = lazy(() => import("./components/todo-redux/Todo"));

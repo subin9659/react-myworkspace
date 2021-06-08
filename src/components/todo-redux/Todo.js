@@ -38,8 +38,8 @@ const Todo = () => {
           <Paper className={classes.paper}>
             <Typography variant="h3">To-Do</Typography>
             <Divider style={{ marginTop: "1rem", marginBottom: "2rem" }} />
-            <TodoList />
             <TodoForm />
+            <TodoList />
           </Paper>
         </Grid>
         <Hidden xsDown>

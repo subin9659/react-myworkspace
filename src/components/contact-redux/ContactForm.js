@@ -11,14 +11,13 @@ const ContactForm = () => {
   const dispatch = useDispatch();
 
   const add = () => {
-    const id = new Date().getTime();
     const name = u_name.current.value;
     const num = u_num.current.value;
     const mail = u_mail.current.value;
 
     // dispatch(action객체)
     // action객체 = {type:"명령어", payload:메시지객체}
-    dispatch({ type: "ADD_CONTACT", payload: { id, name, num, mail } });
+    dispatch({ type: "ADD_CONTACT", payload: { name, num, mail } });
     u_name.current.value = "";
     u_num.current.value = "";
     u_mail.current.value = "";

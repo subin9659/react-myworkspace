@@ -37,7 +37,8 @@ const Contact = () => {
         <Grid item xs={12} sm={10} md={8} lg={6}>
           <Paper className={classes.paper}>
             <Typography variant="h3">Contact</Typography>
-            <Divider style={{ marginTop: "1rem", marginBottom: "5rem" }} />
+            <Divider style={{ marginTop: "1rem", marginBottom: "2rem" }} />
+            <ContactForm />
             <table>
               <thead>
                 <tr>
@@ -50,7 +51,6 @@ const Contact = () => {
               </thead>
               <ContactList />
             </table>
-            <ContactForm />
           </Paper>
         </Grid>
         <Hidden xsDown>

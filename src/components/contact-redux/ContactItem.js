@@ -1,5 +1,4 @@
 import TextField from "@material-ui/core/TextField";
-
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 
@@ -23,7 +22,7 @@ const ContactItem = ({ contact }) => {
     const name = u_name.current.value;
     const num = u_num.current.value;
     const mail = u_mail.current.value;
-    dispatch({ type: "SAVE_CONTACT", payload: { id, name, num, mail } });
+    dispatch({ type: "MODIFY_CONTACT", payload: { id, name, num, mail } });
   };
 
   return (
