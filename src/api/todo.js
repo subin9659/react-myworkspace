@@ -20,6 +20,12 @@ const todoApi = {
   add: (data) => axios.post(`${process.env.REACT_APP_API_BASE}/todos`, data),
   // GET / todos
   fetch: () => axios.get(`${process.env.REACT_APP_API_BASE}/todos`),
+  // GET / todos
+  fetchPaging: (page, size) =>
+    axios.get(
+      `${process.env.REACT_APP_API_BASE}/todos/paging?page=${page}&size=${size}`
+    ),
+
   // DELETE FROM todo WHERE id=dfd 이니까 id가 필요해
   remove: (id) => axios.delete(`${process.env.REACT_APP_API_BASE}/todos/${id}`),
   modify: (data) =>
