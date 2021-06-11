@@ -26,7 +26,7 @@ const ContactItem = ({ contact }) => {
   };
 
   return (
-    <tr>
+    <tr style={{ display: "table", width: "100%", tableLayout: "fixed" }}>
       <td>
         <ButtonGroup color="primary" aria-label="outlined primary button group">
           <Button

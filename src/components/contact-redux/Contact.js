@@ -40,13 +40,25 @@ const Contact = () => {
             <Divider style={{ marginTop: "1rem", marginBottom: "2rem" }} />
             <ContactForm />
             <table>
-              <thead>
-                <tr>
-                  <th></th>
-                  <th style={{ width: "50%" }}>이름</th>
+              <thead
+                style={{
+                  display: "table",
+                  width: "100%",
+                  tableLayout: "fixed",
+                }}
+              >
+                <tr
+                  style={{
+                    display: "table",
+                    width: "100%",
+                    tableLayout: "fixed",
+                  }}
+                >
+                  <th>삭제</th>
+                  <th>이름</th>
                   <th>전화번호</th>
                   <th>이메일</th>
-                  <th></th>
+                  <th>작업</th>
                 </tr>
               </thead>
               <ContactList />

@@ -18,9 +18,8 @@ const ContactList = () => {
     <>
       <tbody
         style={{
-          height: "400px",
-          width: "600px",
-          overflow: "scroll",
+          height: "45vh",
+          overflowY: "auto",
           display: "block",
         }}
       >
@@ -28,13 +27,17 @@ const ContactList = () => {
           <ContactItem key={contact.id} contact={contact} />
         ))}
       </tbody>
-      <div>
-        <ContactPagination
-          totalElements={data.totalElements}
-          page={data.page}
-          size={data.size}
-        />
-      </div>
+      <tfoot>
+        <tr>
+          <td colSpan="5">
+            <ContactPagination
+              totalElements={data.totalElements}
+              page={data.page}
+              size={data.size}
+            />
+          </td>
+        </tr>
+      </tfoot>
     </>
   );
 };
