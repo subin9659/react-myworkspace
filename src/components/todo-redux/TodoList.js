@@ -32,7 +32,7 @@ const TodoList = () => {
         {data.content.map((todo) => (
           <TodoItem key={todo.id} todo={todo} />
         ))}
-      </List>
+      </List>{" "}
       <TodoPagination
         totalElements={data.totalElements}
         page={data.page}

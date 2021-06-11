@@ -42,11 +42,11 @@ const Contact = () => {
             <table>
               <thead>
                 <tr>
-                  <th style={{ width: "70px" }}></th>
-                  <th style={{ width: "200px" }}>이름</th>
-                  <th style={{ width: "200px" }}>전화번호</th>
-                  <th style={{ width: "200px" }}>이메일</th>
-                  <th style={{ width: "50px" }}></th>
+                  <th></th>
+                  <th style={{ width: "50%" }}>이름</th>
+                  <th>전화번호</th>
+                  <th>이메일</th>
+                  <th></th>
                 </tr>
               </thead>
               <ContactList />
