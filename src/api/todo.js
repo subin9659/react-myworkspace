@@ -18,15 +18,14 @@ const todoApi = {
 
   // POST /todos {"memo":"Redux 공부하기"}
   add: (data) => axios.post(`${process.env.REACT_APP_API_BASE}/todos`, data),
-  // GET / todos
+  // GET /todos
   fetch: () => axios.get(`${process.env.REACT_APP_API_BASE}/todos`),
-  // GET / todos
+  // GET /todos/paging?page=0&size=10
   fetchPaging: (page, size) =>
     axios.get(
       `${process.env.REACT_APP_API_BASE}/todos/paging?page=${page}&size=${size}`
     ),
-
-  // DELETE FROM todo WHERE id=dfd 이니까 id가 필요해
+  // DELETE /todos/1
   remove: (id) => axios.delete(`${process.env.REACT_APP_API_BASE}/todos/${id}`),
   modify: (data) =>
     axios.put(`${process.env.REACT_APP_API_BASE}/todos/${data.id}`, data),

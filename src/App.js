@@ -54,6 +54,7 @@ const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(rootSaga);
 
 // 라우터에 로딩되는 컴포넌트는 컨테이너 컴포넌트
+const Fitness = lazy(() => import("./components/fitness/Fitness"));
 const Todo = lazy(() => import("./components/todo-redux/Todo"));
 const TodoDetail = lazy(() => import("./components/todo-redux/TodoDetail"));
 const Contact = lazy(() => import("./components/contact-redux/Contact"));
@@ -133,6 +134,14 @@ function App() {
             <ListItemText>Home</ListItemText>
           </ListItem>
         </Link>
+        <Link to="/fitness" className={classes.link}>
+          <ListItem button>
+            <ListItemIcon>
+              <HomeIcon />
+            </ListItemIcon>
+            <ListItemText>Fitness</ListItemText>
+          </ListItem>
+        </Link>
         <Link to="/todo" className={classes.link}>
           <ListItem button>
             <ListItemIcon>
@@ -146,7 +155,7 @@ function App() {
             <ListItemIcon>
               <TableChart />
             </ListItemIcon>
-            <ListItemText>Contacts</ListItemText>
+            <ListItemText>CONTACT</ListItemText>
           </ListItem>
         </Link>
       </List>
@@ -209,6 +218,7 @@ function App() {
               <Suspense fallback={<div>Loading...</div>}>
                 <Switch>
                   <Route path="/" component={Home} exact></Route>
+                  <Route path="/fitness" component={Fitness} exact></Route>
                   <Route path="/todo" component={Todo} exact></Route>
                   {/* :매개변수명 -> 컴포넌트에서 변수처럼 받을 수 있음 */}
                   <Route path="/todo/:id" component={TodoDetail}></Route>

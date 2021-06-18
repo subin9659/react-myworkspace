@@ -22,6 +22,7 @@ function* addTodo(action) {
     // api.add(action.payload).then(result => result);
     const result = yield call(api.add, action.payload);
     console.log(result);
+    // const id = new Date().getTime();
     // 2. API호출이 완료되면 state를 변경함
     // put: reducer에 state를 변경하는(dispatch) 이펙트
     yield put({
@@ -62,11 +63,10 @@ function* removeTodo(action) {
   try {
     // 1. 서버의 REST API를 호출함
     // action.payload == id
-    // id: 데이터베이스의 PK, JPA 엔티티의 $Id
+    // id: 데이터베이스의 PK, JPA 엔티티의 @Id
     const result = yield call(api.remove, action.payload);
     console.log(result);
     // 2. API호출이 완료되면 state를 변경함
-
     yield put({
       type: "REMOVE_TODO_SUCCEEDED",
       payload: action.payload,
