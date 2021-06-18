@@ -30,11 +30,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const grade = (fitnessValue) => {
+  //console.log(fitnessValue);
+  let fitnessValueKeys = Object.keys(fitnessValue);
+  let fitnessValueValues = Object.values(fitnessValue);
+
+  //console.log(fitnessValueKeys); // 체중, 신장
+  //console.log(fitnessValueValues); //값
+
+  /// console.log(fitnessValueValues[0]);
+};
+
 const Fitness = () => {
   const classes = useStyles();
-  const [source, setSource] = useState([]);
   const [fitnessValue, setFitnessValue] = useState([]);
-  const [val, setVal] = useState([]);
+
+  const [source, setSource] = useState([]);
 
   // 백엔드에서 받아온 데이터를 세팅함
 
@@ -45,22 +56,11 @@ const Fitness = () => {
 
       if (source.length === 0) return [];
       return source.map((item) => {
-        let fitnessValue = {
+        const fitnessValue = {
           상장구분: item.certGbn,
-          측정기록: item.testYm,
         };
         for (let name in itemName) {
           let val = item[name];
-          // fitnessValue[itemName[name]] = parseInt(val);
-          // -> 1,2,3, NaN값이 나왔음
-
-          // 2. if (isNaN(val)) {
-          //   fitnessValue[itemName[name]] = 0;
-          // } else {
-          //   fitnessValue[itemName[name]] = parseInt(val);
-          // }
-          // -> 모두 0값이 나왔음
-
           if (!!val) {
             if (!isNaN(val)) {
               fitnessValue[itemName[name]] = val * 1;
@@ -71,7 +71,10 @@ const Fitness = () => {
             }
           }
         }
-        console.log(fitnessValue); // FitnessTableData최종본
+        setFitnessValue(fitnessValue);
+        //console.log(fitnessValue);
+        //console.log(result);
+        grade(fitnessValue);
       });
     };
     getData();
@@ -92,38 +95,7 @@ const Fitness = () => {
           <h3> 신체등급 측정 </h3>
         </Paper>
       </Grid>
-      {/* <Grid item xs={12} sm={5} lg={4}>
-        <Paper className={classes.paper} style={{ height: "25vh" }}>
-          <h3>
-            <Select
-              value={sido}
-              onChange={(event) => {
-                setSido(event.target.value);
-              }}
-            >
-              {Object.keys(sidoKorName).map((sido) => (
-                <MenuItem key={`menu-${sido}`} value={sido}>
-                  {sidoKorName[sido]}
-                </MenuItem>
-              ))}
-            </Select>
-            {"\u00A0"} 미세먼지 현황
-          </h3>
-          <LineChartSample data={transformLocationData(source, sido)} />
-        </Paper>
-      </Grid>
-      <Hidden mdDown>
-        <Grid item lg={1} />
-      </Hidden>
-      <Hidden mdDown>
-        <Grid item lg={1} />
-      </Hidden>
-      <Grid item xs={12} sm={12} lg={10}>
-        <Paper className={classes.paper}>
-          <h3>시도별 미세먼지 이력</h3>
-          <ResponsiveTable data={transformSidoTableData(source.slice(0, 8))} />
-        </Paper>
-      </Grid> */}
+
       <Hidden mdDown>
         <Grid item lg={1} />
       </Hidden>
