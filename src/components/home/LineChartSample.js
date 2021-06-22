@@ -16,12 +16,13 @@ const LineChartSample = ({ data }) => {
     <ResponsiveContainer width="100%" height="70%">
       <LineChart data={data}>
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="dataTime" />
+        <XAxis dataKey="name" />
         <YAxis />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="pm10" stroke="#8884d8" />
-        <Line type="monotone" dataKey="pm25" stroke="#66bb6a" />
+        <Line type="monotone" dataKey="Seoul" stroke="#8884d8" />
+        <Line type="monotone" dataKey="Busan" stroke="#82ca9d" />
+        <Line type="monotone" dataKey="Jeju" stroke="#FFB6C1" />
       </LineChart>
     </ResponsiveContainer>
   );

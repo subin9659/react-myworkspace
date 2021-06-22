@@ -2,37 +2,25 @@
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
-const pm10Color = (val) => {
+const tableColor = (val) => {
   let color = "#329fff";
 
-  if (val > 30 && val <= 80) {
+  if (val > 10 && val <= 20) {
     color = "#00c73c";
-  } else if (val > 80 && val <= 150) {
+  } else if (val > 20 && val <= 28) {
     color = "#fd9b5a";
-  } else if (val > 150) {
+  } else if (val > 28) {
     color = "#ff5959";
   }
 
-  return color;
+  return tableColor;
 };
 
-const pm25Color = (val) => {
-  let color = "#329fff";
-
-  if (val > 15 && val <= 35) {
-    color = "#00c73c";
-  } else if (val > 35 && val <= 75) {
-    color = "#fd9b5a";
-  } else if (val > 75) {
-    color = "#ff5959";
-  }
-
-  return color;
-};
+const transCityName = (data) => {};
 
 const ResponsiveTable = ({ data }) => {
-  // console.log("--table data--");
-  // console.log(data);
+  console.log("--table data--");
+  console.log(data[0]);
 
   return (
     // <Table >
@@ -57,7 +45,7 @@ const ResponsiveTable = ({ data }) => {
         <Tbody>
           {data.map((item) => (
             <Tr
-              key={`tr-${item.시간}-${item.구분}`}
+              key={`tr-${item.지역}`}
               style={{
                 border: "0px",
                 borderBottom: "1px solid rgba(224, 224, 224)",
@@ -71,10 +59,10 @@ const ResponsiveTable = ({ data }) => {
                   }}
                   key={`td-${index}`}
                 >
-                  {["시간", "구분"].indexOf(key) > -1 ? (
+                  {["지역"].indexOf(key) > -1 ? (
                     <span
                       style={{
-                        color: item.구분 === "PM10" ? "#8884d8" : "#82ca9d",
+                        color: item.구분 === "#8884d8",
                       }}
                     >
                       {item[key]}
@@ -82,10 +70,8 @@ const ResponsiveTable = ({ data }) => {
                   ) : (
                     <span
                       style={{
-                        color:
-                          item.구분 === "PM10"
-                            ? pm10Color(item[key])
-                            : pm25Color(item[key]),
+                        color: item.구분 === "PM10",
+                        //  tableColor(item[key])
                       }}
                     >
                       {item[key]}
