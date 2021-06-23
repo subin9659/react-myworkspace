@@ -6,24 +6,20 @@ const tableColor = (val) => {
   let color = "#329fff";
 
   if (val > 10 && val <= 20) {
-    color = "#00c73c";
+    color = "#0066CC";
   } else if (val > 20 && val <= 28) {
-    color = "#fd9b5a";
+    color = "#999999";
   } else if (val > 28) {
-    color = "#ff5959";
+    color = "#FF0033";
   }
-
-  return tableColor;
+  return color;
 };
-
-const transCityName = (data) => {};
 
 const ResponsiveTable = ({ data }) => {
   console.log("--table data--");
-  console.log(data[0]);
+  //console.log(data);
 
   return (
-    // <Table >
     data.length > 0 && (
       <Table style={{ borderCollapse: "collapse" }}>
         <Thead>
@@ -32,7 +28,8 @@ const ResponsiveTable = ({ data }) => {
               <Th
                 style={{
                   borderBottom: "1px solid rgba(224, 224, 224)",
-                  lineHeight: "2rem",
+                  fontsize: "0.5rem",
+                  lineheight: "2rem",
                   fontWeight: "bold",
                 }}
                 key={`th-${index}`}
@@ -49,20 +46,31 @@ const ResponsiveTable = ({ data }) => {
               style={{
                 border: "0px",
                 borderBottom: "1px solid rgba(224, 224, 224)",
+                fontsize: "0.5rem",
+                lineheight: "1.5rem",
+                color: "F000000",
               }}
             >
               {Object.keys(item).map((key, index) => (
                 <Td
                   style={{
                     borderBottom: "1px solid rgba(224, 224, 224)",
-                    lineHeight: "2rem",
+                    fontsize: "0.5rem",
+                    lineheight: "1.5rem",
                   }}
                   key={`td-${index}`}
                 >
                   {["지역"].indexOf(key) > -1 ? (
                     <span
                       style={{
-                        color: item.구분 === "#8884d8",
+                        color:
+                          item.지역 == "서울" ||
+                          item.지역 == "인천" ||
+                          item.지역 == "강원" ||
+                          item.지역 == "전북" ||
+                          item.지역 == "제주"
+                            ? "#8884d8"
+                            : "#82ca9d",
                       }}
                     >
                       {item[key]}
@@ -70,8 +78,7 @@ const ResponsiveTable = ({ data }) => {
                   ) : (
                     <span
                       style={{
-                        color: item.구분 === "PM10",
-                        //  tableColor(item[key])
+                        color: tableColor(item[key]),
                       }}
                     >
                       {item[key]}

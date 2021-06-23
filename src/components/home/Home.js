@@ -54,36 +54,32 @@ const transformSidoData = (source) => {
 const UV = (uv) => {
   if (uv.length === 0) return [];
 
-  const seoul = uv.filter((it) => new RegExp("1100000000").test(it.areaNo));
-  const busan = uv.filter((it) => new RegExp("2600000000").test(it.areaNo));
-  const incheon = uv.filter((it) => new RegExp("2800000000").test(it.areaNo));
-  const gyeonggi = uv.filter((it) => new RegExp("4100000000").test(it.areaNo));
-  const gangwon = uv.filter((it) => new RegExp("4200000000").test(it.areaNo));
-  const chungcheong = uv.filter((it) =>
-    new RegExp("4300000000").test(it.areaNo)
-  );
-  const jeolla = uv.filter((it) => new RegExp("4500000000").test(it.areaNo));
-  const gyeongsang = uv.filter((it) =>
-    new RegExp("4700000000").test(it.areaNo)
-  );
-  const jeju = uv.filter((it) => new RegExp("5000000000").test(it.areaNo));
+  let seoul = uv.filter((it) => new RegExp("1100000000").test(it.areaNo));
+  let busan = uv.filter((it) => new RegExp("2600000000").test(it.areaNo));
+  let incheon = uv.filter((it) => new RegExp("2800000000").test(it.areaNo));
+  let gyeonggi = uv.filter((it) => new RegExp("4100000000").test(it.areaNo));
+  let gangwon = uv.filter((it) => new RegExp("4200000000").test(it.areaNo));
+  let chungcheong = uv.filter((it) => new RegExp("4300000000").test(it.areaNo));
+  let jeolla = uv.filter((it) => new RegExp("4500000000").test(it.areaNo));
+  let gyeongsang = uv.filter((it) => new RegExp("4700000000").test(it.areaNo));
+  let jeju = uv.filter((it) => new RegExp("5000000000").test(it.areaNo));
 
-  const seoulTodayUV = seoul[0].today;
-  const busanTodayUV = busan[0].today;
-  const gangwonTodayUV = gangwon[0].today;
-  const jejuTodayUV = jeju[0].today;
+  let seoulTodayUV = seoul[0].today;
+  let busanTodayUV = busan[0].today;
+  let gangwonTodayUV = gangwon[0].today;
+  let jejuTodayUV = jeju[0].today;
 
-  const seoulTomorrowUV = seoul[0].tomorrow;
-  const busanTomorrowUV = busan[0].tomorrow;
-  const gangwonTomorrowUV = gangwon[0].tomorrow;
-  const jejuTomorrowUV = jeju[0].tomorrow;
+  let seoulTomorrowUV = seoul[0].tomorrow;
+  let busanTomorrowUV = busan[0].tomorrow;
+  let gangwonTomorrowUV = gangwon[0].tomorrow;
+  let jejuTomorrowUV = jeju[0].tomorrow;
 
-  const seoulAfterTomorrowUV = seoul[0].theDayAfterTomorrow;
-  const busanAfterTomorrowUV = busan[0].theDayAfterTomorrow;
-  const gangwonAfterTomorrowUV = gangwon[0].theDayAfterTomorrow;
-  const jejuAfterTomorrowUV = jeju[0].theDayAfterTomorrow;
+  let seoulAfterTomorrowUV = seoul[0].theDayAfterTomorrow;
+  let busanAfterTomorrowUV = busan[0].theDayAfterTomorrow;
+  let gangwonAfterTomorrowUV = gangwon[0].theDayAfterTomorrow;
+  let jejuAfterTomorrowUV = jeju[0].theDayAfterTomorrow;
 
-  const uvdata = [
+  let uvdata = [
     {
       name: "오늘",
       Seoul: seoulTodayUV,
@@ -106,8 +102,34 @@ const UV = (uv) => {
   return uvdata;
 };
 
-const summerTemp = (summer) => {
+const transAreaName = (summer) => {
   if (summer.length === 0) return [];
+  summer.forEach((e) => {
+    if (e.areaNo == "1100000000") {
+      e.areaNo = "서울";
+    } else if (e.areaNo == "2600000000") {
+      e.areaNo = "부산";
+    } else if (e.areaNo == "2800000000") {
+      e.areaNo = "인천";
+    } else if (e.areaNo == "4100000000") {
+      e.areaNo = "경기";
+    } else if (e.areaNo == "4200000000") {
+      e.areaNo = "강원";
+    } else if (e.areaNo == "4300000000") {
+      e.areaNo = "충북";
+    } else if (e.areaNo == "4500000000") {
+      e.areaNo = "전북";
+    } else if (e.areaNo == "4700000000") {
+      e.areaNo = "경북";
+    } else if (e.areaNo == "5000000000") {
+      e.areaNo = "제주";
+    }
+  });
+  return summer;
+};
+
+const summerTemp = (summer) => {
+  transAreaName(summer);
   return summer.map((item) => {
     let summerTable = { 지역: item.areaNo };
     for (let num in hour) {
@@ -116,19 +138,6 @@ const summerTemp = (summer) => {
     }
     console.log(summerTable);
     return summerTable;
-  });
-};
-
-const transformSidoTableData = (source) => {
-  if (source.length === 0) return [];
-  return source.map((item) => {
-    let newItem = { 시간: item.dataTime.substr(5, 11), 구분: item.itemCode };
-    for (let name in sidoKorName) {
-      let val = item[name];
-      newItem[sidoKorName[name]] = parseInt(val);
-    }
-    //console.log(newItem);
-    return newItem; // map함수 안에서 반환되는 객체
   });
 };
 
@@ -177,11 +186,12 @@ const Home = () => {
 
   useEffect(() => {
     // async-await, ES8, ES2017
-    const getSummer = async () => {
+    let getSummer = async () => {
       // await 키워드: promise 처리가 완료될 때까지 대기
       // async 함수 안에서만 쓸 수가 있음.
       // -> 네트워크 호출이 끝날때까지 대기하고 결과값을 반환함
-      const resultSummer = await api.fetchSummer();
+      let resultSummer = await api.fetchSummer();
+
       //console.log(resultSummer.data);
       setSummer(resultSummer.data);
     };
@@ -202,13 +212,13 @@ const Home = () => {
       </Hidden>
       <Grid item xs={12} sm={7} lg={6}>
         <Paper className={classes.paper} style={{ height: "25vh" }}>
-          <h3>시도별 미세먼지 현재 현황</h3>
+          <h3>🌎🌎시도별 미세먼지 현재 현황🌎🌎</h3>
           <BarChartSample data={transformSidoData(source)} />
         </Paper>
       </Grid>
       <Grid item xs={12} sm={5} lg={4}>
         <Paper className={classes.paper} style={{ height: "25vh" }}>
-          <h3>시도별 자외선 지수</h3>
+          <h3>🌞🌞시도별 자외선 지수🌞🌞</h3>
           <LineChartSample data={UV(uv)} />
         </Paper>
       </Grid>
@@ -220,7 +230,7 @@ const Home = () => {
       </Hidden>
       <Grid item xs={12} sm={12} lg={10}>
         <Paper className={classes.paper}>
-          <h3>체감온도</h3>
+          <h3>🥵🥵여름철 체감온도🥵🥵</h3>
           <ResponsiveTable data={summerTemp(summer)} />
         </Paper>
       </Grid>
