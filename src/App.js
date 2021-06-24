@@ -54,7 +54,10 @@ const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(rootSaga);
 
 // 라우터에 로딩되는 컴포넌트는 컨테이너 컴포넌트
-const Fitness = lazy(() => import("./components/fitness/Fitness"));
+const Fitness = lazy(() => import("./components/fitness-redux/Fitness"));
+const FitnessDetail = lazy(() =>
+  import("./components/fitness-redux/FitnessDetail")
+);
 const Todo = lazy(() => import("./components/todo-redux/Todo"));
 const TodoDetail = lazy(() => import("./components/todo-redux/TodoDetail"));
 const Contact = lazy(() => import("./components/contact-redux/Contact"));
@@ -219,6 +222,7 @@ function App() {
                 <Switch>
                   <Route path="/" component={Home} exact></Route>
                   <Route path="/fitness" component={Fitness} exact></Route>
+                  <Route path="/fitness/:id" component={FitnessDetail}></Route>
                   <Route path="/todo" component={Todo} exact></Route>
                   {/* :매개변수명 -> 컴포넌트에서 변수처럼 받을 수 있음 */}
                   <Route path="/todo/:id" component={TodoDetail}></Route>

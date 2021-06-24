@@ -7,7 +7,7 @@ const fitnessApi = {
   fetch: () => axios.get(`${process.env.REACT_APP_API_BASE}/fitness`),
   fetchPaging: (page, size) =>
     axios.get(
-      `${process.env.REACT_APP_API_BASE}/contacts/paging?page=${page}&size=${size}`
+      `${process.env.REACT_APP_API_BASE}/fitness/paging?page=${page}&size=${size}`
     ),
 
   // DELETE FROM fitness WHERE id=dfd 이니까 id가 필요해

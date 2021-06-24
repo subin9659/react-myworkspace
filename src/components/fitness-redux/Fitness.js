@@ -1,35 +1,34 @@
 import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
 import Hidden from "@material-ui/core/Hidden";
 
 import { Divider, Typography } from "@material-ui/core";
-
-import Button from "@material-ui/core/Button";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
 
 import { useEffect, useState } from "react";
 import BarChartSample from "./BarChartSample";
 
 import api from "../../api/opendata";
-import BMI from "./BMI";
+
+import FitnessForm from "./FitnessForm";
+import FitnessList from "./FitnessList";
 
 const useStyles = makeStyles((theme) => ({
-  // 내부 페이퍼에 스타일을 지정
+  formRoot: {
+    display: "flex",
+    height: theme.typography.fontSize * 2,
+  },
   paper: {
     padding: theme.spacing(2),
-    textAlign: "center",
     color: theme.palette.text.secondary,
   },
 
-  // 화면이 1280px 이상이면 그리드 컨테이너 위쪽에 마진을 줌.
   container: {
     [theme.breakpoints.up("lg")]: {
       marginTop: "80px",
     },
   },
 }));
-
 const numOfPeople = (source) => {
   if (source.length === 0) return [];
 
@@ -79,7 +78,6 @@ const numOfPeople = (source) => {
   ];
   return numdata;
 };
-
 const Fitness = () => {
   const classes = useStyles();
   const [source, setSource] = useState([]);
@@ -88,43 +86,72 @@ const Fitness = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const result = await api.fetchFitness();
-      setSource(result.data);
-      console.log(result);
+      const healthratio = await api.fetchHealthdata();
+      setSource(healthratio.data);
+      //console.log(healthratio);
     };
     getData();
   }, []);
 
   return (
-    // Grid 컨테이너 선언
-    // spacing: Grid Item(내부요소) 들의 띄어쓰기
-    <Grid container spacing={3} className={classes.container}>
-      {/* Grid 아이템 선언 lg사이즈 이상일 때 2칸 */}
-      {/* item 공간 합이 12개가되면 다음행으로 넘어감 */}
-      {/* 1행 */}
-      <Hidden mdDown>
-        <Grid item lg={1} />
-      </Hidden>
-      <Grid item xs={12} sm={7} lg={6}>
-        <Paper className={classes.paper} style={{ height: "85vh" }}>
-          <h3> 신체등급 측정 </h3>
-          <Divider style={{ marginTop: "1rem", marginBottom: "2rem" }} />
-        </Paper>
+    <>
+      <Grid container spacing={2} className={classes.container}>
+        <Hidden mdDown>
+          <Grid item lg={1} />
+        </Hidden>
+        <Grid item xs={12} sm={10} md={8} lg={6}>
+          <Paper className={classes.paper} style={{ height: "45vh" }}>
+            <Typography variant="h3">신체등급측정</Typography>
+            <Divider style={{ marginTop: "1rem", marginBottom: "1rem" }} />
+            <FitnessForm />
+            <table>
+              <thead
+                style={{
+                  display: "table",
+                  width: "100%",
+                  tableLayout: "fixed",
+                }}
+              >
+                <tr
+                  style={{
+                    display: "table",
+                    width: "100%",
+                    tableLayout: "fixed",
+                  }}
+                >
+                  <th>삭제</th>
+                  <th>신장</th>
+                  <th>체중</th>
+                  <th>작업</th>
+                </tr>
+              </thead>
+              <FitnessList />
+            </table>
+          </Paper>
+        </Grid>
+
+        <Grid item xs={12} sm={5} lg={4}>
+          <Paper className={classes.paper} style={{ height: "45vh" }}>
+            <h3> 연도별 등급추세 </h3>
+            <BarChartSample data={numOfPeople(source)} />
+          </Paper>
+        </Grid>
+        <Hidden mdDown>
+          <Grid item lg={1} />
+        </Hidden>
+        <Hidden mdDown>
+          <Grid item lg={1} />
+        </Hidden>
+        <Grid item xs={12} sm={12} lg={10}>
+          <Paper className={classes.paper}>
+            <h3> 평균값 알아보기 </h3>
+          </Paper>
+        </Grid>
+        <Hidden mdDown>
+          <Grid item lg={1} />
+        </Hidden>
       </Grid>
-      <Grid item xs={12} sm={5} lg={4}>
-        <Paper className={classes.paper} style={{ height: "40vh" }}>
-          <h3> 연도별 등급추세 </h3>
-          <BarChartSample data={numOfPeople(source)} />
-        </Paper>
-        <Paper className={classes.paper} style={{ height: "40vh" }}>
-          <h3> BMI 측정하기 </h3>
-          <BMI />
-        </Paper>
-      </Grid>
-      <Hidden mdDown>
-        <Grid item lg={1} />
-      </Hidden>
-    </Grid>
+    </>
   );
 };
 export default Fitness;

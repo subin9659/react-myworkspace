@@ -2,8 +2,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Hidden from "@material-ui/core/Hidden";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
 
 import BarChartSample from "./BarChartSample";
 import LineChartSample from "./LineChartSample";
@@ -179,6 +177,7 @@ const Home = () => {
       // -> 네트워크 호출이 끝날때까지 대기하고 결과값을 반환함
       const resultWeather = await api.fetchWeatherUV();
       //console.log(resultWeather.data);
+
       setUV(resultWeather.data);
     };
     getUV();
