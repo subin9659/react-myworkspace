@@ -51,6 +51,7 @@ const transformSidoData = (source) => {
 
 const UV = (uv) => {
   if (uv.length === 0) return [];
+  console.log(uv);
 
   let seoul = uv.filter((it) => new RegExp("1100000000").test(it.areaNo));
   let busan = uv.filter((it) => new RegExp("2600000000").test(it.areaNo));

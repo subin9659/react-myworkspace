@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import FitnessItem from "./FitnessItem";
+import LineChart from "./LineChart";
 import FitnessPagination from "./FitnessPagination";
 
 const FitnessList = () => {
@@ -8,6 +9,21 @@ const FitnessList = () => {
   console.log("-- fitness state in FitnessList Component --");
   console.log(data);
   const dispatch = useDispatch();
+
+  const inbody = (data) => {
+    if (data.length === 0) return [];
+    let inbodyData = data.content;
+    let inbodyLength = inbodyData.length;
+    console.log(inbodyLength);
+    console.log(inbodyData[0].createdTime);
+
+    let inbodyTable = [
+      {
+        day: inbodyData[0].createdTime,
+        BMI: inbodyData[0].height,
+      },
+    ];
+  };
 
   useEffect(() => {
     // 서버에서 데이터를 받아오는 action을 실행
@@ -18,7 +34,7 @@ const FitnessList = () => {
     <>
       <tbody
         style={{
-          height: "20vh",
+          height: "60vh",
           overflowY: "auto",
           display: "block",
         }}
@@ -26,6 +42,7 @@ const FitnessList = () => {
         {data.content.map((fitness) => (
           <FitnessItem key={fitness.id} fitness={fitness} />
         ))}
+        <LineChart data={inbody(data)} />
       </tbody>
       <tfoot
         style={{
@@ -33,7 +50,7 @@ const FitnessList = () => {
         }}
       >
         <tr>
-          <td colSpan="7">
+          <td>
             <FitnessPagination
               totalElements={data.totalElements}
               page={data.page}
