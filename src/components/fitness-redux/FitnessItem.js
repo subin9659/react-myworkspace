@@ -12,6 +12,8 @@ const FitnessItem = ({ fitness }) => {
   const dispatch = useDispatch();
   const u_height = useRef();
   const u_weight = useRef();
+  const u_smm = useRef();
+  const u_fat = useRef();
 
   const remove = (id) => {
     dispatch({ type: "REMOVE_FITNESS", payload: id });
@@ -20,7 +22,13 @@ const FitnessItem = ({ fitness }) => {
   const save = (id) => {
     const height = u_height.current.value;
     const weight = u_weight.current.value;
-    dispatch({ type: "MODIFY_FITNESS", payload: { id, height, weight } });
+    const smm = u_smm.current.value;
+    const fat = u_fat.current.value;
+
+    dispatch({
+      type: "MODIFY_FITNESS",
+      payload: { id, height, weight, smm, fat },
+    });
   };
 
   return (
@@ -76,6 +84,49 @@ const FitnessItem = ({ fitness }) => {
             type="text"
             inputRef={u_weight}
             defaultValue={fitness.weight}
+            style={{ width: "100%" }}
+          ></TextField>
+        )}
+      </td>
+      <td>
+        {!isEdit && (
+          <span
+            style={{ cursor: "pointer" }}
+            // history.push('경로'), history 스택(stack)에 경로 추가
+            onClick={() => {
+              history.push(`/fitness/${fitness.id}`);
+            }}
+          >
+            {fitness.smm}
+          </span>
+        )}
+        {isEdit && (
+          <TextField
+            type="text"
+            inputRef={u_smm}
+            defaultValue={fitness.smm}
+            style={{ width: "100%" }}
+          ></TextField>
+        )}
+      </td>
+
+      <td>
+        {!isEdit && (
+          <span
+            style={{ cursor: "pointer" }}
+            // history.push('경로'), history 스택(stack)에 경로 추가
+            onClick={() => {
+              history.push(`/fitness/${fitness.id}`);
+            }}
+          >
+            {fitness.fat}
+          </span>
+        )}
+        {isEdit && (
+          <TextField
+            type="text"
+            inputRef={u_fat}
+            defaultValue={fitness.fat}
             style={{ width: "100%" }}
           ></TextField>
         )}

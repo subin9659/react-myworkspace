@@ -78,6 +78,7 @@ const numOfPeople = (source) => {
   ];
   return numdata;
 };
+
 const Fitness = () => {
   const classes = useStyles();
   const [source, setSource] = useState([]);
@@ -122,14 +123,16 @@ const Fitness = () => {
                   <th>삭제</th>
                   <th>신장</th>
                   <th>체중</th>
+                  <th>골격근량</th>
+                  <th>체지방량</th>
                   <th>작업</th>
                 </tr>
               </thead>
+
               <FitnessList />
             </table>
           </Paper>
         </Grid>
-
         <Grid item xs={12} sm={5} lg={4}>
           <Paper className={classes.paper} style={{ height: "45vh" }}>
             <h3> 연도별 등급추세 </h3>
@@ -144,7 +147,7 @@ const Fitness = () => {
         </Hidden>
         <Grid item xs={12} sm={12} lg={10}>
           <Paper className={classes.paper}>
-            <h3> 평균값 알아보기 </h3>
+            <h3> 인바디 추이 </h3>
           </Paper>
         </Grid>
         <Hidden mdDown>

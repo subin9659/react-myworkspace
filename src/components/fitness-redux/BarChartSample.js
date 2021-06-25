@@ -27,7 +27,7 @@ const colorPatition = (val) => {
 
 const BarChartSample = ({ data }) => {
   //console.log("--barchart data--");
-  //console.log(data);
+  console.log(data);
 
   return (
     <ResponsiveContainer width="100%" height="70%">

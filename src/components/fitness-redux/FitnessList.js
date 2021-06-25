@@ -33,7 +33,7 @@ const FitnessList = () => {
         }}
       >
         <tr>
-          <td colSpan="4">
+          <td colSpan="7">
             <FitnessPagination
               totalElements={data.totalElements}
               page={data.page}

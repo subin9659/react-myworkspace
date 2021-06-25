@@ -40,6 +40,7 @@ const FitnessDetail = () => {
           <Paper className={classes.paper}>
             <Typography variant="h3">Fitness</Typography>
             <Divider style={{ marginTop: "1rem", marginBottom: "2rem" }} />
+            <Box style={{ padding: "1rem" }}>{fitness.age}</Box>
             <Box style={{ padding: "1rem" }}>{fitness.height}</Box>
             <Box style={{ padding: "1rem" }}>{fitness.weight}</Box>
             <Box style={{ display: "flex", direction: "rtl" }}>
