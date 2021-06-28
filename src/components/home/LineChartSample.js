@@ -9,11 +9,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 const LineChartSample = ({ data }) => {
-  // console.log("--linechart data--");
-  // console.log(data);
-
   return (
-    <ResponsiveContainer width="100%" height="70%">
+    <ResponsiveContainer width="100%" height="80%">
       <LineChart data={data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
@@ -21,8 +18,8 @@ const LineChartSample = ({ data }) => {
         <Tooltip />
         <Legend />
         <Line type="monotone" dataKey="Seoul" stroke="#8884d8" />
-        <Line type="monotone" dataKey="Busan" stroke="#82ca9d" />
-        <Line type="monotone" dataKey="Jeju" stroke="#FFB6C1" />
+        <Line type="monotone" dataKey="Incheon" stroke="#F08080" />
+        <Line type="monotone" dataKey="Gyeonggi" stroke="#FF8C00	" />
       </LineChart>
     </ResponsiveContainer>
   );

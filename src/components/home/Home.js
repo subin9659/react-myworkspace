@@ -2,12 +2,16 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Hidden from "@material-ui/core/Hidden";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
 
 import BarChartSample from "./BarChartSample";
 import LineChartSample from "./LineChartSample";
 import ResponsiveTable from "./ResponsiveTableSample";
 
 import sidoKorName from "./data/sidoKorName";
+import uvName from "./data/uvName";
+
 import hour from "./data/hour";
 
 import { useEffect, useState } from "react";
@@ -52,50 +56,40 @@ const transformSidoData = (source) => {
 const UV = (uv) => {
   if (uv.length === 0) return [];
   console.log(uv);
-
   let seoul = uv.filter((it) => new RegExp("1100000000").test(it.areaNo));
-  let busan = uv.filter((it) => new RegExp("2600000000").test(it.areaNo));
   let incheon = uv.filter((it) => new RegExp("2800000000").test(it.areaNo));
   let gyeonggi = uv.filter((it) => new RegExp("4100000000").test(it.areaNo));
-  let gangwon = uv.filter((it) => new RegExp("4200000000").test(it.areaNo));
-  let chungcheong = uv.filter((it) => new RegExp("4300000000").test(it.areaNo));
-  let jeolla = uv.filter((it) => new RegExp("4500000000").test(it.areaNo));
-  let gyeongsang = uv.filter((it) => new RegExp("4700000000").test(it.areaNo));
-  let jeju = uv.filter((it) => new RegExp("5000000000").test(it.areaNo));
 
   let seoulTodayUV = seoul[0].today;
-  let busanTodayUV = busan[0].today;
-  let gangwonTodayUV = gangwon[0].today;
-  let jejuTodayUV = jeju[0].today;
+  let incheonTodayUV = incheon[0].today;
+  let gyeonggiTodayUV = gyeonggi[0].today;
 
   let seoulTomorrowUV = seoul[0].tomorrow;
-  let busanTomorrowUV = busan[0].tomorrow;
-  let gangwonTomorrowUV = gangwon[0].tomorrow;
-  let jejuTomorrowUV = jeju[0].tomorrow;
+  let incheonTomorrowUV = incheon[0].tomorrow;
+  let gyeonggiTomorrowUV = gyeonggi[0].tomorrow;
 
   let seoulAfterTomorrowUV = seoul[0].theDayAfterTomorrow;
-  let busanAfterTomorrowUV = busan[0].theDayAfterTomorrow;
-  let gangwonAfterTomorrowUV = gangwon[0].theDayAfterTomorrow;
-  let jejuAfterTomorrowUV = jeju[0].theDayAfterTomorrow;
+  let incheonAfterTomorrowUV = incheon[0].theDayAfterTomorrow;
+  let gyeonggiAfterTomorrowUV = gyeonggi[0].theDayAfterTomorrow;
 
   let uvdata = [
     {
       name: "오늘",
       Seoul: seoulTodayUV,
-      Busan: busanTodayUV,
-      Jeju: jejuTodayUV,
+      Incheon: incheonTodayUV,
+      Gyeonggi: gyeonggiTodayUV,
     },
     {
       name: "내일",
       Seoul: seoulTomorrowUV,
-      Busan: busanTomorrowUV,
-      Jeju: jejuTomorrowUV,
+      Incheon: incheonTomorrowUV,
+      Gyeonggi: gyeonggiTomorrowUV,
     },
     {
       name: "모레",
       Seoul: seoulAfterTomorrowUV,
-      Busan: busanAfterTomorrowUV,
-      Jeju: jejuAfterTomorrowUV,
+      Incheon: incheonAfterTomorrowUV,
+      Gyeonggi: gyeonggiAfterTomorrowUV,
     },
   ];
   return uvdata;
@@ -218,7 +212,7 @@ const Home = () => {
       </Grid>
       <Grid item xs={12} sm={5} lg={4}>
         <Paper className={classes.paper} style={{ height: "25vh" }}>
-          <h3>🌞🌞자외선 지수🌞🌞</h3>
+          <h3>🌞🌞서울,인천,경기 자외선 지수🌞🌞</h3>
           <LineChartSample data={UV(uv)} />
         </Paper>
       </Grid>

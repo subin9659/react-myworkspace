@@ -26,9 +26,6 @@ const colorPatition = (val) => {
 };
 
 const BarChartSample = ({ data }) => {
-  //console.log("--barchart data--");
-  console.log(data);
-
   return (
     <ResponsiveContainer width="100%" height="70%">
       <BarChart data={data}>
@@ -43,7 +40,7 @@ const BarChartSample = ({ data }) => {
             type: "square",
             value: item,
             color:
-              index === 0 ? "#8884d8" : index === 1 ? "#82ca9d" : "#FFB6C1",
+              index === 0 ? "#B0C4DE" : index === 1 ? "#66CDAA" : "	#FFB6C1",
           }))}
         />
         {/* 범례, 데이터의 계열을 표시 */}

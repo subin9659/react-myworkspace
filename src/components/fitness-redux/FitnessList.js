@@ -19,7 +19,6 @@ const FitnessList = () => {
     const inbodyRealData = [];
     let item = {};
     for (let i = 0; i < inbodyLength; i++) {
-      console.log("=====");
       item.id = inbodyData[i].id;
       item.height = inbodyData[i].height;
       item.weight = inbodyData[i].weight;

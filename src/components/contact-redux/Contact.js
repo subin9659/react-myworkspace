@@ -36,7 +36,7 @@ const Contact = () => {
         </Hidden>
         <Grid item xs={12} sm={10} md={8} lg={6}>
           <Paper className={classes.paper}>
-            <Typography variant="h3">Contact</Typography>
+            <Typography variant="h3">고객 연락처 관리</Typography>
             <Divider style={{ marginTop: "1rem", marginBottom: "2rem" }} />
             <ContactForm />
             <table>

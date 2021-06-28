@@ -154,7 +154,7 @@ function App() {
             <ListItemIcon>
               <FitnessCenterIcon />
             </ListItemIcon>
-            <ListItemText>오늘 할 운동은??</ListItemText>
+            <ListItemText>오늘 할 운동</ListItemText>
           </ListItem>
         </Link>
         <Link to="/contacts" className={classes.link}>
