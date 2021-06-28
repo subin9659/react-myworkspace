@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import FitnessItem from "./FitnessItem";
 import LineChart from "./LineChart";
 import FitnessPagination from "./FitnessPagination";
+import { ForumTwoTone } from "@material-ui/icons";
 
 const FitnessList = () => {
   const data = useSelector((state) => state.fitness);
@@ -14,7 +15,20 @@ const FitnessList = () => {
     if (data.length === 0) return [];
     let inbodyData = data.content;
     let inbodyLength = inbodyData.length;
-    console.log(inbodyLength);
+
+    const inbodyRealData = [];
+    let item = {};
+    for (let i = 0; i < inbodyLength; i++) {
+      console.log("=====");
+      item.id = inbodyData[i].id;
+      item.height = inbodyData[i].height;
+      item.weight = inbodyData[i].weight;
+      item.smm = inbodyData[i].smm;
+      item.fat = inbodyData[i].fat;
+      inbodyRealData.unshift(item);
+      item = {};
+    }
+    return inbodyRealData;
   };
 
   useEffect(() => {
