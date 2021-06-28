@@ -29,6 +29,7 @@ import FitnessCenterIcon from "@material-ui/icons/FitnessCenter";
 import AssessmentIcon from "@material-ui/icons/Assessment";
 import CloudDoneIcon from "@material-ui/icons/CloudDone";
 import ContactsIcon from "@material-ui/icons/Contacts";
+import VideoLibraryIcon from "@material-ui/icons/VideoLibrary";
 
 // Icons
 // https://material-ui.com/components/material-icons/
@@ -68,6 +69,7 @@ const Contact = lazy(() => import("./components/contact-redux/Contact"));
 const ContactDetail = lazy(() =>
   import("./components/contact-redux/ContactDetail")
 );
+const Video = lazy(() => import("./components/video"));
 
 const drawerWidth = "240px";
 
@@ -165,6 +167,14 @@ function App() {
             <ListItemText>고객들 연락처 관리</ListItemText>
           </ListItem>
         </Link>
+        <Link to="/video" className={classes.link}>
+          <ListItem button>
+            <ListItemIcon>
+              <VideoLibraryIcon />
+            </ListItemIcon>
+            <ListItemText>유튜브</ListItemText>
+          </ListItem>
+        </Link>
       </List>
     </>
   );
@@ -232,6 +242,7 @@ function App() {
                   <Route path="/todo/:id" component={TodoDetail}></Route>
                   <Route path="/contacts" component={Contact}></Route>
                   <Route path="/contacts/:id" component={ContactDetail}></Route>
+                  <Route path="/video" component={Video} exact></Route>
                 </Switch>
               </Suspense>
             </main>
