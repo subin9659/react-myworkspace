@@ -15,14 +15,6 @@ const FitnessList = () => {
     let inbodyData = data.content;
     let inbodyLength = inbodyData.length;
     console.log(inbodyLength);
-    console.log(inbodyData[0].createdTime);
-
-    let inbodyTable = [
-      {
-        day: inbodyData[0].createdTime,
-        BMI: inbodyData[0].height,
-      },
-    ];
   };
 
   useEffect(() => {
