@@ -102,7 +102,7 @@ const Fitness = () => {
         </Hidden>
         <Grid item xs={12} sm={10} md={8} lg={6}>
           <Paper className={classes.paper} style={{ height: "85vh" }}>
-            <Typography variant="h3">신체등급측정</Typography>
+            <Typography variant="h4">인바디 리포트</Typography>
             <Divider style={{ marginTop: "1rem", marginBottom: "1rem" }} />
             <FitnessForm />
             <table>
@@ -135,7 +135,7 @@ const Fitness = () => {
         </Grid>
         <Grid item xs={12} sm={5} lg={4}>
           <Paper className={classes.paper} style={{ height: "45vh" }}>
-            <h3> 연도별 등급추세 </h3>
+            <h3></h3>
             <BarChartSample data={numOfPeople(source)} />
           </Paper>
         </Grid>

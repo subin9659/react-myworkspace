@@ -212,13 +212,13 @@ const Home = () => {
       </Hidden>
       <Grid item xs={12} sm={7} lg={6}>
         <Paper className={classes.paper} style={{ height: "25vh" }}>
-          <h3>🌎🌎시도별 미세먼지 현재 현황🌎🌎</h3>
+          <h3>🌎🌎미세먼지 현재 현황🌎🌎</h3>
           <BarChartSample data={transformSidoData(source)} />
         </Paper>
       </Grid>
       <Grid item xs={12} sm={5} lg={4}>
         <Paper className={classes.paper} style={{ height: "25vh" }}>
-          <h3>🌞🌞시도별 자외선 지수🌞🌞</h3>
+          <h3>🌞🌞자외선 지수🌞🌞</h3>
           <LineChartSample data={UV(uv)} />
         </Paper>
       </Grid>
@@ -230,7 +230,7 @@ const Home = () => {
       </Hidden>
       <Grid item xs={12} sm={12} lg={10}>
         <Paper className={classes.paper}>
-          <h3>🥵🥵여름철 체감온도🥵🥵</h3>
+          <h3>🥵🥵오늘의 체감온도🥵🥵</h3>
           <ResponsiveTable data={summerTemp(summer)} />
         </Paper>
       </Grid>

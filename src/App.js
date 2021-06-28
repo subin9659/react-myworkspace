@@ -25,6 +25,10 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+import FitnessCenterIcon from "@material-ui/icons/FitnessCenter";
+import AssessmentIcon from "@material-ui/icons/Assessment";
+import CloudDoneIcon from "@material-ui/icons/CloudDone";
+import ContactsIcon from "@material-ui/icons/Contacts";
 
 // Icons
 // https://material-ui.com/components/material-icons/
@@ -132,33 +136,33 @@ function App() {
         <Link to="/" className={classes.link}>
           <ListItem button>
             <ListItemIcon>
-              <HomeIcon />
+              <CloudDoneIcon />
             </ListItemIcon>
-            <ListItemText>Home</ListItemText>
+            <ListItemText>날씨체크</ListItemText>
           </ListItem>
         </Link>
         <Link to="/fitness" className={classes.link}>
           <ListItem button>
             <ListItemIcon>
-              <HomeIcon />
+              <AssessmentIcon />
             </ListItemIcon>
-            <ListItemText>Fitness</ListItemText>
+            <ListItemText>인바디결과</ListItemText>
           </ListItem>
         </Link>
         <Link to="/todo" className={classes.link}>
           <ListItem button>
             <ListItemIcon>
-              <PlaylistAddCheck />
+              <FitnessCenterIcon />
             </ListItemIcon>
-            <ListItemText>To-Do</ListItemText>
+            <ListItemText>오늘 할 운동은??</ListItemText>
           </ListItem>
         </Link>
         <Link to="/contacts" className={classes.link}>
           <ListItem button>
             <ListItemIcon>
-              <TableChart />
+              <ContactsIcon />
             </ListItemIcon>
-            <ListItemText>CONTACT</ListItemText>
+            <ListItemText>고객들 연락처 관리</ListItemText>
           </ListItem>
         </Link>
       </List>
@@ -185,7 +189,7 @@ function App() {
                     <MenuIcon />
                   </IconButton>
                   <Typography variant="h6" noWrap>
-                    MY WORKSPACE
+                    MY FITNESS DIARY
                   </Typography>
                 </Toolbar>
               </AppBar>
