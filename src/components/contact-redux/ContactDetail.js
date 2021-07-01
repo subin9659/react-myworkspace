@@ -26,10 +26,13 @@ const useStyles = makeStyles((theme) => ({
 const ContactDetail = () => {
   const classes = useStyles();
   const history = useHistory();
+  console.log(history);
 
   const { id } = useParams();
+  // console.log(id); //45
   const contact = useSelector(
-    (state) => state.contact.filter((contact) => contact.id === parseInt(id))[0]
+    (state) =>
+      state.contact.content.filter((contact) => contact.id === parseInt(id))[0]
   );
   console.log(contact);
 
@@ -44,15 +47,13 @@ const ContactDetail = () => {
             <Typography variant="h3">고객 정보</Typography>
             <Divider style={{ marginTop: "1rem", marginBottom: "2rem" }} />
             <Box style={{ padding: "1rem" }}>{contact.name}</Box>
-            <Box style={{ padding: "1rem" }}>{contact.num}</Box>
-            <Box style={{ padding: "1rem" }}>{contact.mail}</Box>
             <Box style={{ display: "flex", direction: "rtl" }}>
               <Button
                 size="small"
                 variant="outlined"
                 color="primary"
                 onClick={() => {
-                  history.push("/contacts");
+                  history.push("/contact");
                 }}
               >
                 목록

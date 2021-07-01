@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
 const TodoDetail = () => {
   const classes = useStyles();
   const history = useHistory();
+  console.log(history);
 
   // /todo/:id
   const { id } = useParams();
@@ -35,7 +36,7 @@ const TodoDetail = () => {
   const todo = useSelector(
     (state) => state.todo.content.filter((todo) => todo.id === parseInt(id))[0]
   );
-  // console.log(todo);
+  console.log(todo);
 
   return (
     <>

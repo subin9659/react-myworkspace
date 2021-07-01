@@ -224,7 +224,7 @@ const Home = () => {
       </Hidden>
       <Grid item xs={12} sm={12} lg={10}>
         <Paper className={classes.paper}>
-          <h3>🥵🥵오늘의 체감온도🥵🥵</h3>
+          <h3>🥵🥵오늘의 체감온도(아침6시기준)🥵🥵</h3>
           <ResponsiveTable data={summerTemp(summer)} />
         </Paper>
       </Grid>
