@@ -60,9 +60,6 @@ sagaMiddleware.run(rootSaga);
 
 // 라우터에 로딩되는 컴포넌트는 컨테이너 컴포넌트
 const Fitness = lazy(() => import("./components/fitness-redux/Fitness"));
-const FitnessDetail = lazy(() =>
-  import("./components/fitness-redux/FitnessDetail")
-);
 const Todo = lazy(() => import("./components/todo-redux/Todo"));
 const TodoDetail = lazy(() => import("./components/todo-redux/TodoDetail"));
 const Contact = lazy(() => import("./components/contact-redux/Contact"));
@@ -159,7 +156,7 @@ function App() {
             <ListItemText>오늘 할 운동</ListItemText>
           </ListItem>
         </Link>
-        <Link to="/contacts" className={classes.link}>
+        <Link to="/contact" className={classes.link}>
           <ListItem button>
             <ListItemIcon>
               <ContactsIcon />
@@ -236,12 +233,11 @@ function App() {
                 <Switch>
                   <Route path="/" component={Home} exact></Route>
                   <Route path="/fitness" component={Fitness} exact></Route>
-                  <Route path="/fitness/:id" component={FitnessDetail}></Route>
                   <Route path="/todo" component={Todo} exact></Route>
                   {/* :매개변수명 -> 컴포넌트에서 변수처럼 받을 수 있음 */}
                   <Route path="/todo/:id" component={TodoDetail}></Route>
-                  <Route path="/contacts" component={Contact}></Route>
-                  <Route path="/contacts/:id" component={ContactDetail}></Route>
+                  <Route path="/contact" component={Contact} exact></Route>
+                  <Route path="/contact/:id" component={ContactDetail}></Route>
                   <Route path="/video" component={Video} exact></Route>
                 </Switch>
               </Suspense>
